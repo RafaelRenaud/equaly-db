@@ -194,10 +194,11 @@ CREATE TABLE IF NOT EXISTS equaly_db."form_ishikawa"(
 
 DROP TYPE IF EXISTS equaly_db.FORM_HISTORY_TYPE CASCADE;
 
-CREATE TYPE equaly_db.FORM_HISTORY_TYPE AS ENUM('VALIDATION','IMPLEMENTATION');
+CREATE TYPE equaly_db.FORM_HISTORY_TYPE AS ENUM('VALIDATION','IMPLEMENTATION','EFFICACY');
 
-CREATE TABLE IF NOT EXISTS equaly_db."reproved_form_history" (
+CREATE TABLE IF NOT EXISTS equaly_db."rnc_history" (
   "id" BIGSERIAL CHECK (id > 0) PRIMARY KEY,
+  "rnc_id" BIGINT NOT NULL,
   "form_id" BIGINT NOT NULL,
   "type" equaly_db.FORM_HISTORY_TYPE NOT NULL,
   "created_at" TIMESTAMP NOT NULL
@@ -243,9 +244,12 @@ ALTER TABLE equaly_db."rnc_form" ADD CONSTRAINT "rnc_form_fk_rnc_id"
   ADD CONSTRAINT "rnc_form_fk_answerable_id" 
   FOREIGN KEY ("answerable_id") REFERENCES equaly_db."user"("id");
  
-ALTER TABLE equaly_db."reproved_form_history" DROP CONSTRAINT IF EXISTS "reproved_form_history_fk_form_id";
+ALTER TABLE equaly_db."rnc_history" DROP CONSTRAINT IF EXISTS "rnc_history_fk_form_id";
+ALTER TABLE equaly_db."rnc_history" DROP CONSTRAINT IF EXISTS "rnc_history_fk_rnc_id";
 
-ALTER TABLE equaly_db."reproved_form_history" ADD CONSTRAINT "reproved_form_history_fk_form_id" 
-  FOREIGN KEY ("form_id") REFERENCES equaly_db."rnc_form"("id");
+ALTER TABLE equaly_db."rnc_history" ADD CONSTRAINT "rnc_history_fk_form_id" 
+  FOREIGN KEY ("form_id") REFERENCES equaly_db."rnc_form"("id"),
+  ADD CONSTRAINT "rnc_history_fk_rnc_id"
+  FOREIGN KEY ("rnc_id") REFERENCES equaly_db."rnc"("id");
 
 COMMIT;
