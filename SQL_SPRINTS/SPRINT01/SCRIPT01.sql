@@ -1,0 +1,60 @@
+-- Role: equaly
+-- DROP ROLE IF EXISTS equaly;
+-- OBSERVATION: RUN THIS SCRIPT AS USER POSTGRES
+
+BEGIN;
+
+CREATE ROLE equaly WITH
+  NOLOGIN
+  NOSUPERUSER
+  INHERIT
+  NOCREATEDB
+  NOCREATEROLE
+  NOREPLICATION;
+
+-- Role: equaly_admin
+-- DROP ROLE IF EXISTS equaly_admin;
+
+CREATE ROLE equaly_admin WITH
+  LOGIN
+  NOSUPERUSER
+  INHERIT
+  CREATEDB
+  NOCREATEROLE
+  NOREPLICATION
+  ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:Cg3QcSSjNy6q/ayBww25dw==$6VC2WMeoHf+drKQCQtDpN1D+1P+IyxoARODa9PN7JRQ=:1lb6dl6QkUn6qyNNbTZANh6inLbx0K12zv47w7uzKSU=';
+
+GRANT equaly TO equaly_admin WITH ADMIN OPTION;
+
+-- Role: equaly_user
+-- DROP ROLE IF EXISTS equaly_user;
+
+CREATE ROLE equaly_user WITH
+  LOGIN
+  NOSUPERUSER
+  INHERIT
+  NOCREATEDB
+  NOCREATEROLE
+  NOREPLICATION
+  ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:cGzspGgmuEGQ+TSqhXUDuA==$ZVMlkVWUffucqHyAI/mQ3BZIzsn/xBBC/o3XvLK1Y+c=:hpMHbVWGbp2c78STkrI42G8OwxIx09eKbgHm9sbV2xA=';
+
+GRANT equaly TO equaly_user;
+
+-- Database: equaly_db
+
+-- DROP DATABASE IF EXISTS equaly_db;
+
+CREATE DATABASE equaly_db
+    WITH
+    OWNER = equaly_admin
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'en_US.UTF-8'
+    LC_CTYPE = 'en_US.UTF-8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+COMMENT ON DATABASE equaly_db
+    IS 'eQualy Database Server';
+
+COMMIT;

@@ -1,0 +1,69 @@
+{
+    "_id": 19530194467,
+    "formType": "5W2H",
+    "rncId" : 23,
+    "report": {
+        "date": "28-04-2022 00:18:45",
+        "user" : "Rafael Renaud Miranda"
+    },
+    "validation": {
+        "date" : "30-04-2022 13:34:32",
+        "inspector" : "Cinthia Cruz de Souza",
+        "state": "OPENED | CLOSED"
+    },
+    "formData" : {
+        "5w2h" : {
+            "what" : {
+                "question" : "O que aconteceu?",
+                "answer" : "Resposta do Por que 1"
+            },
+            "why" : {
+                "question" : "Por que aconteceu?",
+                "answer" : "Resposta do Por que 2"
+            },
+            "where" : {
+                "question" : "Onde aconteceu?",
+                "answer" : "Resposta do Por que 3"
+            },
+            "when" : {
+                "question" : "Quando aconteceu?",
+                "answer" : "Resposta do Por que 4"
+            },
+            "who" : {
+                "question" : "Quem esteve envolvido?",
+                "answer" : "Resposta do Por que 5"
+            },
+            "how" : {
+                "question" : "Como aconteceu?",
+                "answer" : "Resposta do Como"
+            },
+            "howMuch" : {
+                "question" : "Quanto foi envolvido no ocorrido?",
+                "answer" : "Resposta do Quanto"
+            }
+        }
+    },
+    "cause": {
+        "root" : "Descrição da Causa Raíz",
+        "secondary" : "Descrição opcional da causa secundária"
+    },
+    "actionPlan": {
+        "description" : "Plano de Ação",
+        "detailsOfInvolved": "Observações dos envolvidos no plano de ação",
+        "previewDate" : "Previsão para entrega da implementação"
+    },
+    "reprovedEficacyHistory": {
+        "validation": {
+            "description" : "Validação do Formulário com eficácia reprovada",
+            "date" : "28-04-2022 00:18:45"
+        },
+        "implementation": {
+            "description" : "Finalização de Implementação com eficácia reprovada",
+            "date" : "28-04-2022 00:18:45"
+        },
+        "eficacy": {
+            "description" : "Validação da Eficácia Reprovada",
+            "date" : "28-04-2022 00:18:45"
+        }
+    }
+}

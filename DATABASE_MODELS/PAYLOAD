@@ -1,0 +1,13 @@
+{
+	"id" : int,
+	"user_id" : "string",
+	"type" : "access_token | recovery_token | external_token",
+	"content" : "bearer"
+	"created_at" : "string",
+	"expired_at" : "string"
+}
+
+ACCESS = 1h -> LONG BEARER (UNIQUE)
+REFRESH_TOKEN = 15MIN -> LONG BEARER (UNIQUE)
+RECOVERY = NO FINAL DO DIA -> SHORT TIMESTAMP DCRYPT (NON UNIQUE)
+EXTERNAL = 1H -> LONG BEARER (NON UNIQUE)
