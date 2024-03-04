@@ -3,8 +3,6 @@
 
 -- DROP SCHEMA IF EXISTS equaly_iam ;
 
-BEGIN;
-
 CREATE SCHEMA IF NOT EXISTS equaly_iam
     AUTHORIZATION equaly_admin;
 
@@ -14,6 +12,8 @@ COMMENT ON SCHEMA equaly_iam
 GRANT USAGE ON SCHEMA equaly_iam TO equaly;
 
 GRANT ALL ON SCHEMA equaly_iam TO equaly_admin;
+
+BEGIN;
 
 CREATE TABLE IF NOT EXISTS "equaly_iam"."CORPORATION" (
 	"ID" BIGSERIAL CHECK ("ID" > 0) PRIMARY KEY,
